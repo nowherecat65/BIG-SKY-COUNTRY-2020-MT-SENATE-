@@ -189,7 +189,7 @@ campaignTrail_temp.temp_election_list = [
 
 jet_data = {
     "headerColor": "#5a9be0",
-    "windowColor": "#d0b062",
+    "windowColor": "#8f8a49",
     "containerColor": "#d0b062",
     "innerWindowColor": "#4e6330",
     "bannerImageUrl": "https://i.postimg.cc/mgpBFs4h/banner-montana2020.webp",
@@ -207,7 +207,7 @@ corrr = '\n              <h2>BIG SKY COUNTRY</h2>\n            ';
 
 nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#5a9be0";
 
-nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#d0b062";
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#8f8a49";
 
 document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
 
