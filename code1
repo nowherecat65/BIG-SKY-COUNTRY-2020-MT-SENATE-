@@ -7,7 +7,7 @@ campaignTrail_temp.global_parameter_json = [
             "max_swing": 0.12,
             "start_point": 0.94,
             "candidate_issue_weight": 10,
-            "running_mate_issue_weight": 3,
+            "running_mate_issue_weight": 1,
             "issue_stance_1_max": -0.71,
             "issue_stance_2_max": -0.3,
             "issue_stance_3_max": -0.125,
@@ -28,15 +28,15 @@ campaignTrail_temp.election_json = [
         "model": "campaign_trail.election",
         "pk": 15,
         "fields": {
-            "year": 1988,
+            "year": 2020,
             "summary": "</p><ul><li>Two years after Jon Tester trumped ''Maryland Matt'', Disappearing Steve Daines is back on the ballot, branded as an out-of-stater by critics, against Governor Steve Bullock, a Real Montanan™.</li><li>Daines thought he could coast to victory again, but Bullock filed to run on the last day, turning a sleepy race into a real fight.</li></ul><p>Farmers cheer, Democrats pray, and Chuck Schumer salivates at the thought of another chink in the GOP’s armor of Senate control. Can Bullock deliver a miracle this November, or is Montana doomed to the same beet-red fate as\n",
             "image_url": "https://i.postimg.cc/qRvktvhw/2020mt-dainesvsbullock.webp",
-            "winning_electoral_vote_number": 270,
-            "advisor_url": "https://www.jetsimon.com/public/static/images/atwater-estrich-1988.jpg",
+            "winning_electoral_vote_number": 1,
+            "advisor_url": "https://i.postimg.cc/TwScxWVT/MTDP-Advisors.webp",
             "recommended_reading": "<h4 style=\"margin-top: 0.5em;\">Books and Links</h4>Peter Goldman - <a href=\"http://www.amazon.com/exec/obidos/ASIN/B012HU7SZA/amhius20-20\" target=\"_blank\">The Quest for the Presidency, 1988</a></br>L.A. Times, November 10, 1988 - <a href=\"http://articles.latimes.com/1988-11-10/news/mn-299_1_dukakis-lost-reelection\" target=\"_blank\">How Presidential Race Was Won-and Lost : Michael S. Dukakis</a></br>L.A. Times, November 10, 1988 - <a href=\"http://articles.latimes.com/1988-11-10/news/mn-302_1_george-bush\" target=\"_blank\">How Presidential Race Was Won--and Lost : George Bush</a></br><a href=\"http://www.usnews.com/news/articles/2008/01/17/the-photo-op-that-tanked\" target=\"_blank\">Michael Dukakis: The Photo Op That Tanked</a>",
             "has_visits": 1,
-            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
-            "creator": "Dan Bryan",
+            "no_electoral_majority_image": "https://i.postimg.cc/Qd4mmPF8/Too-Close-To-Call.webp",
+            "creator": "BIG SKY COUNTRY Team",
             "display_year": "2020BSC"
         }
     }
@@ -58,9 +58,9 @@ campaignTrail_temp.candidate_json = [
             "secondary_color_hex": "#d1abab",
             "is_active": 1,
             "image_url": "https://i.postimg.cc/SsFv5TqS/sdaines.webp",
-            "electoral_victory_message": "<h3>Congratulations! You have won the 1988 election.</h3><p>In spite of a hard-fought challenge from Michael Dukakis, you have held on to succeed Ronald Reagan.</p><p>Whatever you did, it must have worked. Observers were leaving your campaign for dead just a few months ago. On the political front, you can continue the policies of Reagan or turn in a more moderate direction. Internationally, you can hopefully oversee a period of relaxed tension with the Soviet Union.</p>",
-            "electoral_loss_message": "<h3>Sorry. You have lost the 1988 election.</h3><p>Perhaps it was always a long-shot -- the American people just seemed ready to move on from Reagan.</p><p>Time will tell if Dukakis governs as a moderate, a liberal, or a technocrat. A lot can happen in four years, but the early gossip is that Bob Dole has the inside track for the 1992 nomination. Your next steps are unclear.</p>",
-            "no_electoral_majority_message": "<h3>Sorry. You have lost the 1988 election.</h3><p>Although the Electoral College was tied, the Democrats have won a solid majority in the House, and will elevate Michael Dukakis to the Presidency.</p><p>Time will tell if Dukakis governs as a moderate, a liberal, or a technocrat. A lot can happen in four years, but the early gossip is that Bob Dole has the inside track for the 1992 nomination. Your next steps are unclear.</p>",
+            "electoral_victory_message": "<h3>You won the Daines side!</h3><p>WIP endings</p>",
+            "electoral_loss_message": "<h3>You lost the Daines side!</h3><p>WIP endings</p>",
+            "no_electoral_majority_message": "<h3>Deadlock!</h3><p>WIP endings</p>",
             "description_as_running_mate": "'",
             "candidate_score": 1,
             "running_mate": false
@@ -81,9 +81,8 @@ campaignTrail_temp.candidate_json = [
             "secondary_color_hex": "#abc5df",
             "is_active": 1,
             "image_url": "https://i.postimg.cc/nrtf4VM9/bullock.webp",
-            "electoral_victory_message": "<h3>Congratulations! You have won the 1988 election.</h3><p>In spite of a hard-fought challenge from George Bush, you have held on to succeed Ronald Reagan.</p><p>You were always the favorite to win, but a lot could have gone wrong. On the political front, you can work a Democratic House to overturn the worst excesses of Reagan. Internationally, you can hopefully oversee a period of relaxed tension with the Soviet Union.</p>",
-            "electoral_loss_message": "<h3>Sorry. You have lost the 1988 election.</h3><p>In spite of you being the favorite, things just never seemed to click once the real campaigning began.</p><p>Time will tell if Bush governs as a moderate, or a staunch conservative. Many Democrats feel that this election was yours to lose, and it seems unlikely that you will be welcome to run again in four years. Your term as Governor, however, runs through 1991.</p>",
-            "no_electoral_majority_message": "<h3>Congratulations! You have won the 1988 election.</h3><p>Although the Electoral College was tied, the Democrats have won a solid majority in the House, and will elevate Michael Dukakis to the Presidency.</p><p>On the political front, you can work a Democratic House to overturn the worst excesses of Reagan. Internationally, you can hopefully oversee a period of relaxed tension with the Soviet Union.</p>",
+            "electoral_victory_message": "<h3>You won the Bullock side!</h3><p>WIP endings</p>",
+            "no_electoral_majority_message": "<h3>Deadlock!</h3><p>WIP endings</p>",
             "description_as_running_mate": "'",
             "candidate_score": 1,
             "running_mate": false
@@ -181,7 +180,7 @@ campaignTrail_temp.opponents_weighted_json = [
 campaignTrail_temp.temp_election_list = [
     {
         "id": 15,
-        "year": 1988,
+        "year": 2020,
         "is_premium": 0,
         "display_year": "2020BSC"
     }
