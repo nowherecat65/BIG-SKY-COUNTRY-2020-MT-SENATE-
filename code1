@@ -29,7 +29,7 @@ campaignTrail_temp.election_json = [
         "pk": 15,
         "fields": {
             "year": 2020,
-            "summary": "</p><p>Two years after Jon Tester trumped ‘Maryland Matt’, and yet <i>another</i> out-of-stater is up on the ballot against a Real Montanan™. Disappearing Daines thought he could coast to victory again, but Steve Bullock entered the race on the last day to file. Farmers cheer, Democrats pray, and Chuck Schumer salivates at the thought of another chink in the GOP’s senate control.</p><p>Can Bullock deliver a miracle this November, or is Montana doomed to the same beet-red fate as all its neighbors?</p>",
+            "summary": "</p><p>Two years after Jon Tester trumped ‘Maryland Matt’, and yet <i>another</i> out-of-stater is up on the ballot against a Real Montanan™. Disappearing Daines thought he could coast to victory again, but Steve Bullock entered the race on the last day to file. Farmers cheer, Democrats pray, and Chuck Schumer salivates at the thought of another chink in the GOP’s senate control.<br>Can Bullock deliver a miracle this November, or is Montana doomed to the same beet-red fate as all its neighbors?</p>",
             "image_url": "https://i.postimg.cc/qRvktvhw/2020mt-dainesvsbullock.webp",
             "winning_electoral_vote_number": 1,
             "advisor_url": "https://i.postimg.cc/TwScxWVT/MTDP-Advisors.webp",
