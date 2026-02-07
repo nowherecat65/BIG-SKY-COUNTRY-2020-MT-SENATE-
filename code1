@@ -129,7 +129,7 @@ campaignTrail_temp.candidate_json = [
             "electoral_victory_message": "'",
             "electoral_loss_message": "'",
             "no_electoral_majority_message": "'",
-            "description_as_running_mate": "</p><p>This isn’t a fair fight.</p><p>If it was, our chances at a mandate wouldn’t depend on winning elections in states like Alabama and West Virginia. Remember two years ago? The biggest blue wave since ‘06, and the NRSC still bungled their way into a ‘win’. Now we’re down three Senate seats, and we need them back come November. You were there for the Obama years; you know what they’ll do if we let them have even a one-seat majority. America is in crisis right now, and we can’t afford to have gridlock and obstruction on day one of the Biden administration. I know it’s a lot to ask, Governor, but we need to expand the map.</p>",
+            "description_as_running_mate": "</p><p>This isn’t a fair fight.</p><p>If it was, our chances at a mandate wouldn’t depend on winning elections in states like Alabama and West Virginia. Remember two years ago? The biggest blue wave since ‘06, and the NRSC still bungled their way into a ‘win’. Now we’re down three Senate seats, and we need them back come November. You were there for the Obama years; you know what they’ll do if we let them have even a one-seat majority. America is in crisis right now, and we can’t afford to have gridlock and obstruction on day one of the Biden administration.</p><p>I know it’s a lot to ask, Governor, but we need to expand the map.</p>",
             "candidate_score": 0,
             "running_mate": true
         }
