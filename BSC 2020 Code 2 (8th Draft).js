@@ -136,9 +136,9 @@ cyoAdventure = function (a) {
         conservatism += 1;
     }
 
-    // +0.5 conservatism
+    // +1 conservatism
     if (ans == 4393 || ans == 4394) {
-        conservatism += 0.5;
+        conservatism += 1;
     }
 
     // +2 conservatism
@@ -159,6 +159,11 @@ cyoAdventure = function (a) {
     // ✅ Sync to shared vars AFTER updates
     campaignTrail_temp.vars = campaignTrail_temp.vars || {};
     campaignTrail_temp.vars.conservatism = conservatism;
+
+    applyTurnoutEffectsFromAnswer(ans);
+
+    // --- Update COVID after every answer ---
+    covidAfterAnswer();
 
     // Branching logic (your existing code continues below...)
     if (ans == 15932) {
@@ -1569,7 +1574,7 @@ campaignTrail_temp.states_json = [
             "name": "Beaverhead",
             "abbr": "Beaverhead",
             "electoral_votes": 0,
-            "popular_votes": 9377,
+            "popular_votes": 5665,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1583,7 +1588,7 @@ campaignTrail_temp.states_json = [
             "name": "Big Horn",
             "abbr": "Big_Horn",
             "electoral_votes": 0,
-            "popular_votes": 13083,
+            "popular_votes": 4793,
             "poll_closing_time": 420,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1597,7 +1602,7 @@ campaignTrail_temp.states_json = [
             "name": "Blaine",
             "abbr": "Blaine",
             "electoral_votes": 0,
-            "popular_votes": 7003,
+            "popular_votes": 3135,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1611,7 +1616,7 @@ campaignTrail_temp.states_json = [
             "name": "Broadwater",
             "abbr": "Broadwater",
             "electoral_votes": 0,
-            "popular_votes": 6863,
+            "popular_votes": 4110,
             "poll_closing_time": 150,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1625,7 +1630,7 @@ campaignTrail_temp.states_json = [
             "name": "Carbon",
             "abbr": "Carbon",
             "electoral_votes": 0,
-            "popular_votes": 10514,
+            "popular_votes": 6995,
             "poll_closing_time": 300,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1639,7 +1644,7 @@ campaignTrail_temp.states_json = [
             "name": "Carter",
             "abbr": "Carter",
             "electoral_votes": 0,
-            "popular_votes": 1407,
+            "popular_votes": 861,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1653,7 +1658,7 @@ campaignTrail_temp.states_json = [
             "name": "Cascade",
             "abbr": "Cascade",
             "electoral_votes": 0,
-            "popular_votes": 84411,
+            "popular_votes": 40039,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1667,7 +1672,7 @@ campaignTrail_temp.states_json = [
             "name": "Chouteau",
             "abbr": "Chouteau",
             "electoral_votes": 0,
-            "popular_votes": 5917,
+            "popular_votes": 2992,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1681,7 +1686,7 @@ campaignTrail_temp.states_json = [
             "name": "Custer",
             "abbr": "Custer",
             "electoral_votes": 0,
-            "popular_votes": 11863,
+            "popular_votes": 5860,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1695,7 +1700,7 @@ campaignTrail_temp.states_json = [
             "name": "Daniels",
             "abbr": "Daniels",
             "electoral_votes": 0,
-            "popular_votes": 1653,
+            "popular_votes": 1030,
             "poll_closing_time": 60,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1709,7 +1714,7 @@ campaignTrail_temp.states_json = [
             "name": "Dawson",
             "abbr": "Dawson",
             "electoral_votes": 0,
-            "popular_votes": 8922,
+            "popular_votes": 4823,
             "poll_closing_time": 360,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1723,7 +1728,7 @@ campaignTrail_temp.states_json = [
             "name": "Deer Lodge",
             "abbr": "Deer_Lodge",
             "electoral_votes": 0,
-            "popular_votes": 9423,
+            "popular_votes": 4882,
             "poll_closing_time": 300,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1737,7 +1742,7 @@ campaignTrail_temp.states_json = [
             "name": "Fallon",
             "abbr": "Fallon",
             "electoral_votes": 0,
-            "popular_votes": 3029,
+            "popular_votes": 1576,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1751,7 +1756,7 @@ campaignTrail_temp.states_json = [
             "name": "Fergus",
             "abbr": "Fergus",
             "electoral_votes": 0,
-            "popular_votes": 11470,
+            "popular_votes": 6534,
             "poll_closing_time": 0,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1765,7 +1770,7 @@ campaignTrail_temp.states_json = [
             "name": "Flathead",
             "abbr": "Flathead",
             "electoral_votes": 0,
-            "popular_votes": 104881,
+            "popular_votes": 60041,
             "poll_closing_time": 240,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1779,7 +1784,7 @@ campaignTrail_temp.states_json = [
             "name": "Gallatin",
             "abbr": "Gallatin",
             "electoral_votes": 0,
-            "popular_votes": 119607,
+            "popular_votes": 71369,
             "poll_closing_time": 240,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1793,7 +1798,7 @@ campaignTrail_temp.states_json = [
             "name": "Garfield",
             "abbr": "Garfield",
             "electoral_votes": 0,
-            "popular_votes": 1171,
+            "popular_votes": 809,
             "poll_closing_time": 0,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1807,7 +1812,7 @@ campaignTrail_temp.states_json = [
             "name": "Glacier",
             "abbr": "Glacier",
             "electoral_votes": 0,
-            "popular_votes": 13744,
+            "popular_votes": 5719,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1821,7 +1826,7 @@ campaignTrail_temp.states_json = [
             "name": "Golden Valley",
             "abbr": "Golden_Valley",
             "electoral_votes": 0,
-            "popular_votes": 821,
+            "popular_votes": 504,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1835,7 +1840,7 @@ campaignTrail_temp.states_json = [
             "name": "Granite",
             "abbr": "Granite",
             "electoral_votes": 0,
-            "popular_votes": 3306,
+            "popular_votes": 2101,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1849,7 +1854,7 @@ campaignTrail_temp.states_json = [
             "name": "Hill",
             "abbr": "Hill",
             "electoral_votes": 0,
-            "popular_votes": 16253,
+            "popular_votes": 7223,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1863,7 +1868,7 @@ campaignTrail_temp.states_json = [
             "name": "Jefferson",
             "abbr": "Jefferson",
             "electoral_votes": 0,
-            "popular_votes": 12142,
+            "popular_votes": 8173,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1877,7 +1882,7 @@ campaignTrail_temp.states_json = [
             "name": "Judith Basin",
             "abbr": "Judith_Basin",
             "electoral_votes": 0,
-            "popular_votes": 2023,
+            "popular_votes": 1348,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1891,7 +1896,7 @@ campaignTrail_temp.states_json = [
             "name": "Lake",
             "abbr": "Lake",
             "electoral_votes": 0,
-            "popular_votes": 31247,
+            "popular_votes": 16628,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1905,7 +1910,7 @@ campaignTrail_temp.states_json = [
             "name": "Lewis and Clark",
             "abbr": "Lewis_and_Clark",
             "electoral_votes": 0,
-            "popular_votes": 71179,
+            "popular_votes": 42509,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1919,7 +1924,7 @@ campaignTrail_temp.states_json = [
             "name": "Liberty",
             "abbr": "Liberty",
             "electoral_votes": 0,
-            "popular_votes": 1958,
+            "popular_votes": 1088,
             "poll_closing_time": 240,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1933,7 +1938,7 @@ campaignTrail_temp.states_json = [
             "name": "Lincoln",
             "abbr": "Lincoln",
             "electoral_votes": 0,
-            "popular_votes": 19744,
+            "popular_votes": 11718,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1947,7 +1952,7 @@ campaignTrail_temp.states_json = [
             "name": "Madison",
             "abbr": "Madison",
             "electoral_votes": 0,
-            "popular_votes": 8661,
+            "popular_votes": 6118,
             "poll_closing_time": 240,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1961,7 +1966,7 @@ campaignTrail_temp.states_json = [
             "name": "McCone",
             "abbr": "McCone",
             "electoral_votes": 0,
-            "popular_votes": 1729,
+            "popular_votes": 1123,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1975,7 +1980,7 @@ campaignTrail_temp.states_json = [
             "name": "Meagher",
             "abbr": "Meagher",
             "electoral_votes": 0,
-            "popular_votes": 1924,
+            "popular_votes": 1118,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -1989,7 +1994,7 @@ campaignTrail_temp.states_json = [
             "name": "Mineral",
             "abbr": "Mineral",
             "electoral_votes": 0,
-            "popular_votes": 4568,
+            "popular_votes": 2551,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2003,7 +2008,7 @@ campaignTrail_temp.states_json = [
             "name": "Missoula",
             "abbr": "Missoula",
             "electoral_votes": 0,
-            "popular_votes": 118353,
+            "popular_votes": 71797,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2017,7 +2022,7 @@ campaignTrail_temp.states_json = [
             "name": "Musselshell",
             "abbr": "Musselshell",
             "electoral_votes": 0,
-            "popular_votes": 4749,
+            "popular_votes": 2879,
             "poll_closing_time": 90,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2031,7 +2036,7 @@ campaignTrail_temp.states_json = [
             "name": "Park",
             "abbr": "Park",
             "electoral_votes": 0,
-            "popular_votes": 17229,
+            "popular_votes": 11607,
             "poll_closing_time": 300,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2045,7 +2050,7 @@ campaignTrail_temp.states_json = [
             "name": "Petroleum",
             "abbr": "Petroleum",
             "electoral_votes": 0,
-            "popular_votes": 502,
+            "popular_votes": 351,
             "poll_closing_time": 90,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2059,7 +2064,7 @@ campaignTrail_temp.states_json = [
             "name": "Phillips",
             "abbr": "Phillips",
             "electoral_votes": 0,
-            "popular_votes": 4211,
+            "popular_votes": 2378,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2073,7 +2078,7 @@ campaignTrail_temp.states_json = [
             "name": "Pondera",
             "abbr": "Pondera",
             "electoral_votes": 0,
-            "popular_votes": 5877,
+            "popular_votes": 3005,
             "poll_closing_time": 300,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2087,7 +2092,7 @@ campaignTrail_temp.states_json = [
             "name": "Powder River",
             "abbr": "Powder_River",
             "electoral_votes": 0,
-            "popular_votes": 1693,
+            "popular_votes": 1137,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2101,7 +2106,7 @@ campaignTrail_temp.states_json = [
             "name": "Powell",
             "abbr": "Powell",
             "electoral_votes": 0,
-            "popular_votes": 6938,
+            "popular_votes": 3176,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2115,7 +2120,7 @@ campaignTrail_temp.states_json = [
             "name": "Prairie",
             "abbr": "Prairie",
             "electoral_votes": 0,
-            "popular_votes": 1090,
+            "popular_votes": 747,
             "poll_closing_time": 60,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2129,7 +2134,7 @@ campaignTrail_temp.states_json = [
             "name": "Ravalli",
             "abbr": "Ravalli",
             "electoral_votes": 0,
-            "popular_votes": 44417,
+            "popular_votes": 28574,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2143,7 +2148,7 @@ campaignTrail_temp.states_json = [
             "name": "Richland",
             "abbr": "Richland",
             "electoral_votes": 0,
-            "popular_votes": 11534,
+            "popular_votes": 5791,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2157,7 +2162,7 @@ campaignTrail_temp.states_json = [
             "name": "Roosevelt",
             "abbr": "Roosevelt",
             "electoral_votes": 0,
-            "popular_votes": 10802,
+            "popular_votes": 4033,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2171,7 +2176,7 @@ campaignTrail_temp.states_json = [
             "name": "Rosebud",
             "abbr": "Rosebud",
             "electoral_votes": 0,
-            "popular_votes": 8306,
+            "popular_votes": 3774,
             "poll_closing_time": 240,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2185,7 +2190,7 @@ campaignTrail_temp.states_json = [
             "name": "Sanders",
             "abbr": "Sanders",
             "electoral_votes": 0,
-            "popular_votes": 12461,
+            "popular_votes": 7586,
             "poll_closing_time": 60,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2199,7 +2204,7 @@ campaignTrail_temp.states_json = [
             "name": "Sheridan",
             "abbr": "Sheridan",
             "electoral_votes": 0,
-            "popular_votes": 3536,
+            "popular_votes": 2024,
             "poll_closing_time": 60,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2213,7 +2218,7 @@ campaignTrail_temp.states_json = [
             "name": "Silver Bow",
             "abbr": "Silver_Bow",
             "electoral_votes": 0,
-            "popular_votes": 35210,
+            "popular_votes": 18824,
             "poll_closing_time": 300,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2227,7 +2232,7 @@ campaignTrail_temp.states_json = [
             "name": "Stillwater",
             "abbr": "Stillwater",
             "electoral_votes": 0,
-            "popular_votes": 9002,
+            "popular_votes": 5744,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2241,7 +2246,7 @@ campaignTrail_temp.states_json = [
             "name": "Sweet Grass",
             "abbr": "Sweet_Grass",
             "electoral_votes": 0,
-            "popular_votes": 3670,
+            "popular_votes": 2459,
             "poll_closing_time": 90,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2255,7 +2260,7 @@ campaignTrail_temp.states_json = [
             "name": "Teton",
             "abbr": "Teton",
             "electoral_votes": 0,
-            "popular_votes": 6253,
+            "popular_votes": 3706,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2269,7 +2274,7 @@ campaignTrail_temp.states_json = [
             "name": "Toole",
             "abbr": "Toole",
             "electoral_votes": 0,
-            "popular_votes": 6253,
+            "popular_votes": 2123,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2283,7 +2288,7 @@ campaignTrail_temp.states_json = [
             "name": "Treasure",
             "abbr": "Treasure",
             "electoral_votes": 0,
-            "popular_votes": 758,
+            "popular_votes": 464,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2297,7 +2302,7 @@ campaignTrail_temp.states_json = [
             "name": "Valley",
             "abbr": "Valley",
             "electoral_votes": 0,
-            "popular_votes": 7561,
+            "popular_votes": 4259,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2311,7 +2316,7 @@ campaignTrail_temp.states_json = [
             "name": "Wheatland",
             "abbr": "Wheatland",
             "electoral_votes": 0,
-            "popular_votes": 2072,
+            "popular_votes": 1059,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2325,7 +2330,7 @@ campaignTrail_temp.states_json = [
             "name": "Wibaux",
             "abbr": "Wibaux",
             "electoral_votes": 0,
-            "popular_votes": 936,
+            "popular_votes": 596,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -2339,7 +2344,7 @@ campaignTrail_temp.states_json = [
             "name": "Yellowstone",
             "abbr": "Yellowstone",
             "electoral_votes": 0,
-            "popular_votes": 165210,
+            "popular_votes": 84109,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
             "election": 15
@@ -13655,6 +13660,608 @@ Compatible with CYOA conservatism variable
 const e = campaignTrail_temp;
 e.vars = e.vars || {};
 
+/***********************
+ * COVID MODEL (question time) + HOOK
+ ***********************/
+
+campaignTrail_temp.vars = campaignTrail_temp.vars || {};
+campaignTrail_temp.vars.covid = campaignTrail_temp.vars.covid || {
+  q: 0,              // question-step index, 0..29
+  driftPerQ: 0,      // player nudges this (tiny)
+  driftAccum: 0,     // accumulated log offset
+  cases: 0
+};
+
+/* PASTE TURNOUT SYSTEM HERE */
+campaignTrail_temp.vars.turnout = campaignTrail_temp.vars.turnout || {
+  statewidePct: 0,
+  statewideFlat: 0,
+  countyPct: {},
+  countyFlat: {}
+};
+
+function addTurnoutStatewidePct(pct) {
+  const t = campaignTrail_temp.vars.turnout;
+  t.statewidePct += pct;
+  t.statewidePct = Math.max(-0.25, Math.min(0.25, t.statewidePct));
+}
+
+function addTurnoutStatewideFlat(votes) {
+  const t = campaignTrail_temp.vars.turnout;
+  t.statewideFlat += votes;
+  t.statewideFlat = Math.max(-200000, Math.min(200000, t.statewideFlat));
+}
+
+function addTurnoutCountyPct(abbr, pct) {
+  const t = campaignTrail_temp.vars.turnout;
+  if (!t.countyPct[abbr]) t.countyPct[abbr] = 0;
+  t.countyPct[abbr] += pct;
+  t.countyPct[abbr] = Math.max(-0.4, Math.min(0.4, t.countyPct[abbr]));
+}
+
+function addTurnoutCountyFlat(abbr, votes) {
+  const t = campaignTrail_temp.vars.turnout;
+  if (!t.countyFlat[abbr]) t.countyFlat[abbr] = 0;
+  t.countyFlat[abbr] += votes;
+  t.countyFlat[abbr] = Math.max(-50000, Math.min(50000, t.countyFlat[abbr]));
+}
+
+// ----------------------------
+// TURNOUT: answer -> effects
+// ----------------------------
+
+// Add your answer IDs here.
+// You can mix and match: statewide %, statewide flat votes, county % by abbr, county flat votes by abbr.
+const TURNOUT_ANSWER_EFFECTS = {
+  // Vote-by-mail law (boosts overall turnout +5%)
+  15642: { statewidePct: 0.05 },
+
+  // Example: big GOTV volunteer operation (+10,000 votes statewide)
+  12346: { statewideFlat: 10000 },
+
+  // Example: ballot access on reservations (boost specific counties)
+  // Use your county "abbr" values exactly (e.g., "Big_Horn", "Glacier", "Rosebud")
+  12347: {
+    countyPct: {
+      Big_Horn: 0.03,
+      Glacier: 0.02,
+      Rosebud: 0.025
+    }
+  },
+
+  // Example: localized turnout bump (flat votes) in a county
+  12348: {
+    countyFlat: {
+      Missoula: 2500,
+      Yellowstone: 2000
+    }
+  }
+};
+
+// ----------------------------
+// COVID GROWTH: answer -> nudges
+// ----------------------------
+//
+// These are LOG-space nudges per question (driftPerQ).
+// They compound. Keep them small.
+// Suggested sizes:
+//  small:  +/- 0.01
+//  medium: +/- 0.02
+//  big:    +/- 0.03
+//
+const COVID_GROWTH_ANSWER_EFFECTS = {
+  // Example: downplay COVID / reopen early -> faster spread
+  // 11111: +0.02,
+    4367: -0.01, //Warn people about COVID
+    4370: 0.01, //Fail to work with Trump on COVID
+    4372: -0.01, //Declare State of Emergency
+    4377: 0.03, //Do In-person Elecioneering
+    4383: -0.01, //Have Jim's family make PSAs
+    4384: -0.02, //Issue Shelter-in-Place Order
+    4481: -0.02, //Keep Lockdowns in Place
+    4482: 0.05, //Total Reopening
+    4483: 0.03, //Partial Reopening
+    4484: -0.01, //Lockdown on Out-of-Staters
+    4502: 0.03, //Lift the Church Ban
+    15642: -0.01, //Increase Access to Vote-by-Mail
+    15560: 0.03, //Do nothing after Jim Tomlin dies
+    15774: 0.01, //In-person Campaigning
+    15795: 0.01, //In-person Campaigning
+    15866: 0.01, //Headline a concert
+    15906: -0.02, //Keep COVID policies in place
+    15907: 0.02, //Lift some of the COVID policies
+    15932: 0.01, //Send volunteers door-knocking
+    15933: 0.01, //in-person campaigning
+    16283: 0.01, //in-person campaigning
+    16296: 0.01, //in-person campaigning
+
+  // Example: mask mandate / restrictions -> slower spread
+  // 22222: -0.02,
+
+  // Your real answer IDs go here:
+  // 15642: -0.01,
+};
+
+let lastCovidGrowthAnswerApplied = null;
+
+function covidGrowthAfterAnswer() {
+  const answers = campaignTrail_temp.player_answers || [];
+  if (!answers.length) return;
+
+  const lastAns = Number(answers[answers.length - 1]);
+  if (!Number.isFinite(lastAns)) return;
+
+  // only apply once per answer id
+  if (lastCovidGrowthAnswerApplied === lastAns) return;
+  lastCovidGrowthAnswerApplied = lastAns;
+
+  const nudge = COVID_GROWTH_ANSWER_EFFECTS[lastAns];
+  if (typeof nudge === "number" && Number.isFinite(nudge)) {
+    nudgeCovidGrowthPerQuestion(nudge);
+  }
+}
+
+function getTurnoutPctForCounty(abbr) {
+  const t = campaignTrail_temp.vars.turnout;
+  const county = Number(t.countyPct?.[abbr] ?? 0);
+  return (Number(t.statewidePct) || 0) + (Number.isFinite(county) ? county : 0);
+}
+
+function getTurnoutFlatForCounty(abbr) {
+  const t = campaignTrail_temp.vars.turnout;
+  const county = Number(t.countyFlat?.[abbr] ?? 0);
+  return Number.isFinite(county) ? county : 0;
+}
+
+function applyTurnoutEffectsFromAnswer(ans) {
+  const eff = TURNOUT_ANSWER_EFFECTS[ans];
+  if (!eff) return;
+
+  if (typeof eff.statewidePct === "number") addTurnoutStatewidePct(eff.statewidePct);
+  if (typeof eff.statewideFlat === "number") addTurnoutStatewideFlat(eff.statewideFlat);
+
+  if (eff.countyPct) {
+    for (const abbr in eff.countyPct) {
+      addTurnoutCountyPct(abbr, eff.countyPct[abbr]);
+    }
+  }
+
+  if (eff.countyFlat) {
+    for (const abbr in eff.countyFlat) {
+      addTurnoutCountyFlat(abbr, eff.countyFlat[abbr]);
+    }
+  }
+}
+
+let lastTurnoutAnswerApplied = null;
+
+function turnoutAfterAnswer() {
+  const answers = campaignTrail_temp.player_answers || [];
+  if (!answers.length) return;
+
+  const lastAns = Number(answers[answers.length - 1]);
+  if (!Number.isFinite(lastAns)) return;
+
+  if (lastTurnoutAnswerApplied === lastAns) return;
+  lastTurnoutAnswerApplied = lastAns;
+
+  applyTurnoutEffectsFromAnswer(lastAns);
+}
+
+// Anchor points mapped onto ~30 questions (0..29).
+// Baseline should match your target trajectory when driftPerQ = 0.
+//
+// You can tweak the q values if your question pacing is uneven,
+// but these defaults are a very reasonable map for Mar->Nov.
+const COVID_Q_ANCHORS = [
+  { q:  0, log: Math.log(0 + 1) },        // Game start (Mar 9): 0
+  { q:  3, log: Math.log(159 + 1) },      // End of March: 159
+  { q:  7, log: Math.log(432 + 1) },      // End of April: 432
+  { q: 10, log: Math.log(466 + 1) },      // End of May: 466
+  { q: 14, log: Math.log(922 + 1) },      // End of June: 922
+  { q: 17, log: Math.log(3624 + 1) },     // End of July: 3,624
+  { q: 21, log: Math.log(7293 + 1) },     // End of August: 7,293
+  { q: 24, log: Math.log(13226 + 1) },    // End of September: 13,226
+  { q: 28, log: Math.log(32027 + 1) },    // End of October: 32,027
+  { q: 29, log: Math.log(38297 + 1) }     // Game end (Nov 7): 38,297
+];
+
+function covidBaselineLogAtQ(q) {
+  // clamp
+  if (q <= COVID_Q_ANCHORS[0].q) return COVID_Q_ANCHORS[0].log;
+  if (q >= COVID_Q_ANCHORS[COVID_Q_ANCHORS.length - 1].q) return COVID_Q_ANCHORS[COVID_Q_ANCHORS.length - 1].log;
+
+  // find segment and interpolate linearly in log-space
+  for (let i = 0; i < COVID_Q_ANCHORS.length - 1; i++) {
+    const a = COVID_Q_ANCHORS[i];
+    const b = COVID_Q_ANCHORS[i + 1];
+    if (q >= a.q && q <= b.q) {
+      const t = (q - a.q) / (b.q - a.q);
+      return a.log + t * (b.log - a.log);
+    }
+  }
+  return COVID_Q_ANCHORS[COVID_Q_ANCHORS.length - 1].log;
+}
+
+/***********************
+ * COVID -> COUNTY POPULATION EFFECT
+ ***********************/
+
+const MT_BASE_VOTING_POP = 900000;
+
+function cacheCountyBaseVotesOnce() {
+  const arr = campaignTrail_temp.states_json;
+  if (!Array.isArray(arr)) return;
+
+  for (const st of arr) {
+    if (!st?.fields) continue;
+    if (typeof st.fields._base_popular_votes !== "number") {
+      st.fields._base_popular_votes = Number(st.fields.popular_votes) || 0;
+    }
+  }
+}
+
+/***********************
+ * COVID county sensitivity (pick by abbr)
+ * (#1 helper utilities)
+ ***********************/
+
+// default if a county isn't listed
+const COVID_SENS_DEFAULT = 1.0;
+
+// runs once guard
+let covidSensitivityInitialized = false;
+
+function setCovidCountySensitivityByAbbr(map) {
+  // map example: { "Missoula": 1.25, "McCone": 0.85 }
+  const arr = campaignTrail_temp.states_json;
+  if (!Array.isArray(arr)) return;
+
+  for (const st of arr) {
+    if (!st?.fields) continue;
+
+    const abbr = String(st.fields.abbr || "").trim();
+    if (!abbr) continue;
+
+    const val = Object.prototype.hasOwnProperty.call(map, abbr)
+      ? Number(map[abbr])
+      : COVID_SENS_DEFAULT;
+
+    st.fields.covid_turnout_sensitivity =
+      Number.isFinite(val) ? val : COVID_SENS_DEFAULT;
+  }
+}
+
+function getCountyCovidSensitivity(st) {
+  const raw = Number(st?.fields?.covid_turnout_sensitivity);
+  return Number.isFinite(raw) ? raw : COVID_SENS_DEFAULT;
+}
+
+function covidPopulationMultiplier(cases) {
+  cases = Math.max(0, Number(cases) || 0);
+
+  const step = 25000;
+  const cap = 200000;
+
+  const snapped = Math.min(cap, Math.floor(cases / step) * step);
+  const reduction = snapped / MT_BASE_VOTING_POP;
+
+  return Math.max(0, 1 - reduction);
+}
+
+/***********************
+ * County-specific COVID multiplier
+ * (#3 uses sensitivity)
+ ***********************/
+function covidPopulationMultiplierForCounty(cases, st) {
+  // Start from the statewide multiplier you already use
+  const statewideMult = covidPopulationMultiplier(cases);
+
+  // Convert multiplier -> reduction fraction
+  const baseReduction = 1 - statewideMult;
+
+  // County sensitivity (default 1.0)
+  const sens = getCountyCovidSensitivity(st);
+
+  // Apply sensitivity to the reduction, then convert back to multiplier
+  const countyReduction = baseReduction * sens;
+  return Math.max(0, 1 - countyReduction);
+}
+
+function applyCovidPopulationEffect() {
+  cacheCountyBaseVotesOnce();
+
+  // Init county COVID sensitivities once, after states_json exists
+  if (!covidSensitivityInitialized) {
+    setCovidCountySensitivityByAbbr({
+      // Healthy (0.01x)
+      "Petroleum": 0.01,
+      "Treasure": 0.01,
+
+      // Few Cases (0.25x)
+      "Carter": 0.25,
+      "Daniels": 0.25,
+      "Fallon": 0.25,
+      "Garfield": 0.25,
+      "Golden Valley": 0.25,
+      "Granite": 0.25,
+      "Judith Basin": 0.25,
+      "Liberty": 0.25,
+      "McCone": 0.25,
+      "Meagher": 0.25,
+      "Powder River": 0.25,
+      "Prairie": 0.25,
+      "Sheridan": 0.25,
+      "Sweet Grass": 0.25,
+      "Wheatland": 0.25,
+      "Wibaux": 0.25,
+
+      // Warning Signs (0.5x)
+      "Beaverhead": 0.5,
+      "Blaine": 0.5,
+      "Broadwater": 0.5,
+      "Carbon": 0.5,
+      "Chouteau": 0.5,
+      "Custer": 0.5,
+      "Dawson": 0.5,
+      "Deer Lodge": 0.5,
+      "Fergus": 0.5,
+      "Jefferson": 0.5,
+      "Madison": 0.5,
+      "Mineral": 0.5,
+      "Musselshell": 0.5,
+      "Phillips": 0.5,
+      "Pondera": 0.5,
+      "Powell": 0.5,
+      "Richland": 0.5,
+      "Roosevelt": 0.5,
+      "Rosebud": 0.5,
+      "Sanders": 0.5,
+      "Stillwater": 0.5,
+      "Teton": 0.5,
+      "Toole": 0.5,
+      "Valley": 0.5,
+
+      // Spreading Fast (0.75x)
+      "Glacier": 0.75,
+
+      // Strained (1x)
+      "Big Horn": 1.0,
+      "Hill": 1.0,
+      "Lake": 1.0,
+      "Lincoln": 1.0,
+      "Park": 1.0,
+      "Ravalli": 1.0,
+
+      // Overwhelmed (1.5x)
+      "Silver Bow": 1.5,
+
+      // Total Crisis (2x)
+      "Cascade": 2.0,
+      "Flathead": 2.0,
+      "Gallatin": 2.0,
+      "Lewis and Clark": 2.0,
+      "Missoula": 2.0,
+      "Yellowstone": 2.0
+    });
+
+    covidSensitivityInitialized = true;
+  }
+
+  const arr = campaignTrail_temp.states_json;
+  if (!Array.isArray(arr)) return;
+
+  const cases = campaignTrail_temp.vars?.covid?.cases ?? 0;
+  const t = campaignTrail_temp.vars.turnout;
+
+  // Pass 1: compute votes after COVID + turnout % + countyFlat
+  // Also compute a total for proportional distribution of statewideFlat.
+  let totalAfterPct = 0;
+
+  for (const st of arr) {
+    if (!st?.fields) continue;
+
+    const abbr = String(st.fields.abbr || "").trim();
+    const base = Number(st.fields._base_popular_votes) || 0;
+
+    // COVID county multiplier
+    const covidMult = covidPopulationMultiplierForCounty(cases, st);
+
+    // Turnout % (statewide + county)
+    const turnoutPct = getTurnoutPctForCounty(abbr); // e.g. 0.05
+    const pctMult = Math.max(0, 1 + turnoutPct);
+
+    // County flat votes
+    const countyFlat = getTurnoutFlatForCounty(abbr);
+
+    const votes = Math.max(0, Math.round(base * covidMult * pctMult + countyFlat));
+
+    st.fields.popular_votes = votes;
+    totalAfterPct += votes;
+  }
+
+  // Pass 2: distribute statewideFlat proportionally across counties
+  const statewideFlat = Number(t?.statewideFlat ?? 0);
+  if (Number.isFinite(statewideFlat) && statewideFlat !== 0 && totalAfterPct > 0) {
+    for (const st of arr) {
+      if (!st?.fields) continue;
+
+      const cur = Number(st.fields.popular_votes) || 0;
+      const share = cur / totalAfterPct;
+
+      const add = statewideFlat * share;
+      st.fields.popular_votes = Math.max(0, Math.round(cur + add));
+    }
+  }
+}
+
+function getMontanaTurnoutChangeTotals() {
+  cacheCountyBaseVotesOnce();
+
+  const arr = campaignTrail_temp.states_json;
+  if (!Array.isArray(arr)) {
+    return { baseTotal: 0, currentTotal: 0, change: 0, changePct: 0 };
+  }
+
+  let baseTotal = 0;
+  let currentTotal = 0;
+
+  for (const st of arr) {
+    if (!st?.fields) continue;
+    baseTotal += Number(st.fields._base_popular_votes) || 0;
+    currentTotal += Number(st.fields.popular_votes) || 0;
+  }
+
+  const change = currentTotal - baseTotal; // signed (positive or negative)
+  const changePct = baseTotal > 0 ? (change / baseTotal) : 0;
+
+  return { baseTotal, currentTotal, change, changePct };
+}
+
+/***********************
+ * COVID CASES SOFT CAP (asymptotic)
+ ***********************/
+const COVID_CASES_HARD_CAP = 900000;     // absolute max
+const COVID_CASES_SLOW_START = 450000;  // slowdown begins here
+
+function softCapCases(rawCases) {
+  rawCases = Math.max(0, Number(rawCases) || 0);
+
+  // Below slowdown point, leave unchanged
+  if (rawCases <= COVID_CASES_SLOW_START) return rawCases;
+
+  // Clamp raw to at most the hard cap
+  rawCases = Math.min(rawCases, COVID_CASES_HARD_CAP);
+
+  const L = COVID_CASES_HARD_CAP;
+  const S = COVID_CASES_SLOW_START;
+
+  // Map the "excess" above S into an asymptote toward L:
+  // capped = S + (L - S) * (1 - exp(-(raw-S)/(L-S)))
+  const excess = rawCases - S;
+  const span = (L - S);
+
+  const capped = S + span * (1 - Math.exp(-excess / span));
+
+  return Math.min(L, capped);
+}
+
+function updateCovidCasesFromQ() {
+  const cv = campaignTrail_temp.vars.covid;
+
+  const baseLog = covidBaselineLogAtQ(cv.q);
+  const totalLog = baseLog + cv.driftAccum;
+
+  // your old raw exponential curve
+  const rawCases = Math.exp(totalLog) - 1;
+
+  // new asymptotic cap behavior
+  const cappedCases = softCapCases(rawCases);
+
+  cv.cases = Math.max(0, Math.round(cappedCases));
+}
+
+function advanceCovidOneQuestion() {
+  const cv = campaignTrail_temp.vars.covid;
+
+  // accumulate drift each question (this is the compounding effect)
+  cv.driftAccum += cv.driftPerQ;
+
+  // advance question-time (cap at 29)
+  cv.q = Math.min(29, cv.q + 1);
+
+  updateCovidCasesFromQ();
+}
+
+// Tiny nudges. Suggested magnitudes:
+// small: +/- 0.01
+// medium: +/- 0.02
+// big: +/- 0.03
+//
+// These are in LOG space per question, so they compound fast.
+// Start conservative.
+function nudgeCovidGrowthPerQuestion(amount) {
+  const cv = campaignTrail_temp.vars.covid;
+  cv.driftPerQ += amount;
+
+  // clamp to keep the numbers from going too far
+  cv.driftPerQ = Math.max(-0.06, Math.min(0.12, cv.driftPerQ));
+}
+
+function covidAfterAnswer() {
+  const answers = campaignTrail_temp.player_answers || [];
+  const len = answers.length;
+  if (len <= 0) return;
+
+  const cv = campaignTrail_temp.vars.covid;
+
+  // Previous q (default 0)
+  const prevQ = Number.isFinite(cv.q) ? cv.q : 0;
+
+  // New q based on answered questions
+  const newQ = Math.min(29, len - 1);
+
+  // If we advanced, accumulate drift for each step advanced
+  const stepsForward = Math.max(0, newQ - prevQ);
+  if (stepsForward > 0) {
+    cv.driftAccum += (Number(cv.driftPerQ) || 0) * stepsForward;
+  }
+
+  // Sync q AFTER accumulating
+  cv.q = newQ;
+
+  // Apply turnout effects for this answer (once)
+  turnoutAfterAnswer();
+
+  // Apply COVID growth nudge for this answer (once) — affects FUTURE steps
+  covidGrowthAfterAnswer();
+
+  // Recalculate cases from baseline + drift (and soft cap)
+  updateCovidCasesFromQ();
+
+  // Recompute county popular votes from base using COVID + turnout
+  applyCovidPopulationEffect();
+}
+
+function debugAdjustCovid(amount) {
+  const cv = campaignTrail_temp.vars.covid;
+
+  // convert amount from case-space to log-space
+  const currentCases = cv.cases;
+  const newCases = Math.max(0, currentCases + amount);
+
+  const baseLog = covidBaselineLogAtQ(cv.q);
+  const newLog = Math.log(newCases + 1);
+
+  // adjust driftAccum so totalLog matches new desired level
+  cv.driftAccum = newLog - baseLog;
+
+  updateCovidCasesFromQ();
+}
+
+function debugResetCovid() {
+  const cv = campaignTrail_temp.vars.covid;
+  cv.driftAccum = 0;
+  cv.driftPerQ = 0;
+  updateCovidCasesFromQ();
+}
+
+function debugMultiplyCovid(mult) {
+  const cv = campaignTrail_temp.vars.covid;
+
+  const currentCases = Number(cv.cases) || 0;
+  const targetCases = Math.max(0, Math.round(currentCases * (Number(mult) || 1)));
+
+  // Convert targetCases into driftAccum (log-space), like debugAdjustCovid does
+  const baseLog = covidBaselineLogAtQ(cv.q);
+  const newLog = Math.log(targetCases + 1);
+
+  cv.driftAccum = newLog - baseLog;
+
+  updateCovidCasesFromQ();       // applies soft cap too
+  applyCovidPopulationEffect();  // refresh popular_votes immediately
+}
+
 function addHeadquarterButton() {
   if (document.getElementById('headquarter_button')) return;
 
@@ -13689,7 +14296,7 @@ function getConservatismDisplay(scoreRaw) {
 
   if (score >= -1 && score <= 1) {
     return {
-      text: 'Montanans see you as a <span style="color:#2E8B57; font-weight:bold;">moderate problem-solver.</span>',
+      text: 'Montanans see you as a <span style="color:#2E8B57; font-weight:bold;">moderate.</span>',
       bg: 'rgba(40,167,69,0.25)'
     };
   }
@@ -13723,6 +14330,13 @@ function adjustConservatism(amount) {
   updateHeadquarterContent(); // refresh banner
 }
 
+function formatSignedNumber(n, decimals = 3) {
+  const num = Number(n) || 0;
+  const rounded = Math.round(num * Math.pow(10, decimals)) / Math.pow(10, decimals);
+  const sign = rounded > 0 ? "+" : (rounded < 0 ? "−" : "");
+  return sign + Math.abs(rounded).toFixed(decimals);
+}
+
 let hqUpdateTimer = null;
 let lastConservSnapshot = null;
 
@@ -13733,19 +14347,71 @@ function updateHeadquarterContent() {
   const banner = hqDiv.querySelector('[data-hq="conservBanner"]');
   if (!banner) return;
 
-  const score = e.vars?.conservatism ?? 0;
+  const score = campaignTrail_temp.vars?.conservatism ?? 0;
 
-  // Only update if the value actually changed (prevents flicker / wasted work)
+  // Always refresh numeric conservatism readout
+  const conservValue = hqDiv.querySelector('[data-hq="conservValue"]');
+  if (conservValue) {
+    conservValue.innerHTML = 'Conservatism: ' + Number(score);
+  }
+
+  // --- Always refresh COVID box (even if conservatism didn't change) ---
+  const covidBox = hqDiv.querySelector('[data-hq="covidBox"]');
+  const covidCases = campaignTrail_temp.vars?.covid?.cases ?? 0;
+
+  if (covidBox) {
+    covidBox.innerHTML = 'COVID cases: ' + Number(covidCases).toLocaleString();
+
+    if (covidCases >= 30000) {
+      covidBox.style.color = '#d62828';
+      covidBox.style.backgroundColor = 'rgba(214,40,40,0.25)';
+      covidBox.style.textShadow = '0 0 8px rgba(214,40,40,0.5)';
+    } else if (covidCases >= 10000) {
+      covidBox.style.color = '#f4a261';
+      covidBox.style.backgroundColor = 'rgba(244,162,97,0.25)';
+      covidBox.style.textShadow = 'none';
+    } else {
+      covidBox.style.color = '#ffffff';
+      covidBox.style.backgroundColor = 'rgba(192,192,192,0.25)';
+      covidBox.style.textShadow = 'none';
+    }
+
+    // --- COVID POP LOSS DEBUG (THIRD BIT) ---
+    const covidPopDebug = hqDiv.querySelector('[data-hq="covidPopDebug"]');
+    if (covidPopDebug) {
+      const totals = getMontanaTurnoutChangeTotals();
+
+    const pct = Math.round(totals.changePct * 1000) / 10; // one decimal
+    const sign = totals.change > 0 ? "+" : (totals.change < 0 ? "−" : "");
+    const absChange = Math.abs(totals.change);
+
+    covidPopDebug.innerHTML =
+    'Turnout Change: ' +
+    sign + absChange.toLocaleString() +
+    ' (' + (pct >= 0 ? "+" : "") + pct + '%)' +
+    '<br>' +
+    'Base votes: ' + totals.baseTotal.toLocaleString() +
+    ' | Current: ' + totals.currentTotal.toLocaleString();
+    }
+    // --- COVID GROWTH DEBUG ---
+const covidGrowthDebug = hqDiv.querySelector('[data-hq="covidGrowthDebug"]');
+if (covidGrowthDebug) {
+  const cv = campaignTrail_temp.vars?.covid || {};
+
+  covidGrowthDebug.innerHTML =
+    'Growth per question: ' + formatSignedNumber(cv.driftPerQ, 3) +
+    '<br>' +
+    'Accumulated drift: ' + formatSignedNumber(cv.driftAccum, 3);
+}
+  }
+
+  // Only update banner if conservatism changed
   if (score === lastConservSnapshot) return;
   lastConservSnapshot = score;
 
   const conservDisplay = getConservatismDisplay(score);
   banner.innerHTML = conservDisplay.text;
   banner.style.backgroundColor = conservDisplay.bg;
-
-  // numeric debug display
-  const valueEl = hqDiv.querySelector('[data-hq="conservValue"]');
-  if (valueEl) valueEl.innerHTML = 'Conservatism: ' + score;
 }
 
 // Start/stop live updates while HQ is open
@@ -13780,6 +14446,7 @@ function openHeadquarter() {
   hqDiv.style.border = '5px solid black';
   hqDiv.style.borderRadius = '10px';
   hqDiv.style.height = '56%';
+  hqDiv.style.overflowY = 'auto';
   hqDiv.style.flexDirection = 'column';
   hqDiv.style.alignItems = 'center';
 
@@ -13810,73 +14477,180 @@ function openHeadquarter() {
   const conservScore = e.vars.conservatism ?? 0;
   const conservDisplay = getConservatismDisplay(conservScore);
 
- const conservatismP = document.createElement('p');
-conservatismP.setAttribute('data-hq', 'conservBanner');
-conservatismP.innerHTML = conservDisplay.text;
+  const conservatismP = document.createElement('p');
+  conservatismP.setAttribute('data-hq', 'conservBanner');
+  conservatismP.innerHTML = conservDisplay.text;
 
-conservatismP.style.fontSize = '2.8em';
-conservatismP.style.fontWeight = 'bold';
-conservatismP.style.textAlign = 'center';
-conservatismP.style.margin = '20px';
-conservatismP.style.padding = '15px 25px';
-conservatismP.style.borderRadius = '8px';
-conservatismP.style.backgroundColor = 'rgb(255, 255, 255)';
-conservatismP.style.lineHeight = '1.2';
-conservatismP.style.backgroundColor = conservDisplay.bg;
-conservatismP.style.boxShadow = '0 0 15px rgba(0, 0, 0, 0.5)';
-hqDiv.appendChild(conservatismP);
+  conservatismP.style.fontSize = '2.8em';
+  conservatismP.style.fontWeight = 'bold';
+  conservatismP.style.textAlign = 'center';
+  conservatismP.style.margin = '20px';
+  conservatismP.style.padding = '15px 25px';
+  conservatismP.style.borderRadius = '8px';
+  conservatismP.style.backgroundColor = 'rgb(255, 255, 255)';
+  conservatismP.style.lineHeight = '1.2';
+  conservatismP.style.backgroundColor = conservDisplay.bg;
+  conservatismP.style.boxShadow = '0 0 15px rgba(0, 0, 0, 0.5)';
+  hqDiv.appendChild(conservatismP);
 
-const debugValue = document.createElement('div');
-debugValue.setAttribute('data-hq', 'conservValue');
-debugValue.style.marginTop = '6px';
-debugValue.style.marginBottom = '8px';
-debugValue.style.fontSize = '1.2em';
-debugValue.style.fontWeight = 'bold';
-debugValue.style.color = 'white';
-debugValue.style.textAlign = 'center';
-debugValue.style.opacity = '0.9';
-debugValue.innerHTML = 'Conservatism: ' + (e.vars?.conservatism ?? 0);
+  const debugValue = document.createElement('div');
+  debugValue.setAttribute('data-hq', 'conservValue');
+  debugValue.style.marginTop = '6px';
+  debugValue.style.marginBottom = '8px';
+  debugValue.style.fontSize = '1.2em';
+  debugValue.style.fontWeight = 'bold';
+  debugValue.style.color = 'white';
+  debugValue.style.textAlign = 'center';
+  debugValue.style.opacity = '0.9';
+  debugValue.innerHTML = 'Conservatism: ' + (e.vars?.conservatism ?? 0);
 
-hqDiv.appendChild(debugValue);
+  hqDiv.appendChild(debugValue);
 
-startHQAutoUpdate();
+  const debugControls = document.createElement('div');
+  debugControls.style.marginTop = '10px';
+  debugControls.style.display = 'flex';
+  debugControls.style.gap = '10px';
+  debugControls.style.justifyContent = 'center';
 
-const debugControls = document.createElement('div');
-debugControls.style.marginTop = '10px';
-debugControls.style.display = 'flex';
-debugControls.style.gap = '10px';
-debugControls.style.justifyContent = 'center';
+  // Decrease
+  const minusBtn = document.createElement('button');
+  minusBtn.innerText = '− Conservatism';
+  minusBtn.style.padding = '6px 10px';
+  minusBtn.onclick = () => adjustConservatism(-1);
 
-// Decrease
-const minusBtn = document.createElement('button');
-minusBtn.innerText = '− Conservatism';
-minusBtn.style.padding = '6px 10px';
-minusBtn.onclick = () => adjustConservatism(-1);
+  // Increase
+  const plusBtn = document.createElement('button');
+  plusBtn.innerText = '+ Conservatism';
+  plusBtn.style.padding = '6px 10px';
+  plusBtn.onclick = () => adjustConservatism(1);
 
-// Increase
-const plusBtn = document.createElement('button');
-plusBtn.innerText = '+ Conservatism';
-plusBtn.style.padding = '6px 10px';
-plusBtn.onclick = () => adjustConservatism(1);
+  debugControls.appendChild(minusBtn);
+  debugControls.appendChild(plusBtn);
+  hqDiv.appendChild(debugControls);
 
-debugControls.appendChild(minusBtn);
-debugControls.appendChild(plusBtn);
-hqDiv.appendChild(debugControls);
+  const resetBtn = document.createElement('button');
+  resetBtn.innerText = 'Reset';
+  resetBtn.style.padding = '6px 10px';
+  resetBtn.onclick = () => adjustConservatism(-e.vars.conservatism); // back to 0
+  debugControls.appendChild(resetBtn);
 
-const resetBtn = document.createElement('button');
-resetBtn.innerText = 'Reset';
-resetBtn.style.padding = '6px 10px';
-resetBtn.onclick = () => adjustConservatism(-e.vars.conservatism); // back to 0
-debugControls.appendChild(resetBtn);
+  // ---- COVID CASES DISPLAY ----
+  const covidBox = document.createElement('div');
+  covidBox.setAttribute('data-hq', 'covidBox');
+
+  covidBox.style.marginTop = '15px';
+  covidBox.style.marginBottom = '15px';
+  covidBox.style.padding = '15px 25px';
+  covidBox.style.borderRadius = '8px';
+  covidBox.style.textAlign = 'center';
+  covidBox.style.fontSize = '1.6em';
+  covidBox.style.fontWeight = 'bold';
+  covidBox.style.boxShadow = '0 0 15px rgba(0, 0, 0, 0.4)';
+  covidBox.style.border = '3px solid black';
+
+  const covidCasesNow = campaignTrail_temp.vars?.covid?.cases ?? 0;
+  covidBox.innerHTML = 'COVID cases: ' + Number(covidCasesNow).toLocaleString();
+
+  hqDiv.appendChild(covidBox);
+  // ---- COVID GROWTH DEBUG ----
+const covidGrowthDebug = document.createElement('div');
+covidGrowthDebug.setAttribute('data-hq', 'covidGrowthDebug');
+
+covidGrowthDebug.style.marginTop = '5px';
+covidGrowthDebug.style.marginBottom = '15px';
+covidGrowthDebug.style.padding = '8px 14px';
+covidGrowthDebug.style.borderRadius = '8px';
+covidGrowthDebug.style.textAlign = 'center';
+covidGrowthDebug.style.fontSize = '1.1em';
+covidGrowthDebug.style.fontWeight = 'bold';
+covidGrowthDebug.style.color = '#ffffff';
+covidGrowthDebug.style.backgroundColor = 'rgba(255,255,255,0.08)';
+covidGrowthDebug.style.border = '2px solid rgba(0,0,0,0.5)';
+
+hqDiv.appendChild(covidGrowthDebug);
+  // Ensure popular_votes are up-to-date before computing turnout change totals
+  applyCovidPopulationEffect();
+
+  // ---- COVID POPULATION LOSS DEBUG ----
+  const covidPopDebug = document.createElement('div');
+  covidPopDebug.setAttribute('data-hq', 'covidPopDebug');
+
+  covidPopDebug.style.marginTop = '5px';
+  covidPopDebug.style.marginBottom = '20px';
+  covidPopDebug.style.padding = '10px 16px';
+  covidPopDebug.style.borderRadius = '8px';
+  covidPopDebug.style.textAlign = 'center';
+  covidPopDebug.style.fontSize = '1.2em';
+  covidPopDebug.style.fontWeight = 'bold';
+  covidPopDebug.style.color = 'white';
+  covidPopDebug.style.backgroundColor = 'rgba(255,255,255,0.10)';
+  covidPopDebug.style.border = '2px solid rgba(0,0,0,0.6)';
+
+  const totalsNow = getMontanaTurnoutChangeTotals();
+
+    const pctNow = Math.round(totalsNow.changePct * 1000) / 10;
+    const signNow = totalsNow.change > 0 ? "+" : (totalsNow.change < 0 ? "−" : "");
+    const absChangeNow = Math.abs(totalsNow.change);
+
+    covidPopDebug.innerHTML =
+  'Turnout Change: ' +
+  signNow + absChangeNow.toLocaleString() +
+  ' (' + (pctNow >= 0 ? "+" : "") + pctNow + '%)' +
+  '<br>' +
+  'Base votes: ' + totalsNow.baseTotal.toLocaleString() +
+  ' | Current: ' + totalsNow.currentTotal.toLocaleString();
+
+  hqDiv.appendChild(covidPopDebug);
+
+  // ---- COVID DEBUG CONTROLS ----
+  const covidDebugControls = document.createElement('div');
+  covidDebugControls.style.marginTop = '10px';
+  covidDebugControls.style.display = 'flex';
+  covidDebugControls.style.gap = '10px';
+  covidDebugControls.style.justifyContent = 'center';
+
+  // Decrease
+  const covidMinus = document.createElement('button');
+  covidMinus.innerText = '− 10 Cases';
+  covidMinus.onclick = () => debugAdjustCovid(-10);
+
+  // Increase
+  const covidPlus = document.createElement('button');
+  covidPlus.innerText = '+ 10 Cases';
+  covidPlus.onclick = () => debugAdjustCovid(10);
+
+  // Reset
+  const covidReset = document.createElement('button');
+  covidReset.innerText = 'Reset Cases';
+  covidReset.onclick = () => debugResetCovid();
+
+  // Multiply down (0.9x)
+    const covidTimesDown = document.createElement('button');
+    covidTimesDown.innerText = '× 0.5';
+    covidTimesDown.onclick = () => debugMultiplyCovid(0.5);
+
+    // Multiply up (1.1x)
+    const covidTimesUp = document.createElement('button');
+    covidTimesUp.innerText = '× 1.5';
+    covidTimesUp.onclick = () => debugMultiplyCovid(1.5);
+
+    covidDebugControls.appendChild(covidMinus);
+    covidDebugControls.appendChild(covidPlus);
+    covidDebugControls.appendChild(covidTimesDown);
+    covidDebugControls.appendChild(covidTimesUp);
+    covidDebugControls.appendChild(covidReset);
+
+    hqDiv.appendChild(covidDebugControls);
+
+  startHQAutoUpdate();
 }
 
-function handleMutations(mutationsList, observer) {
+function handleMutations(mutationsList) {
   if (observerRunning) return;
   observerRunning = true;
 
   addHeadquarterButton();
 
-  observer.observe(document.documentElement, { childList: true, subtree: true });
   observerRunning = false;
 }
 
